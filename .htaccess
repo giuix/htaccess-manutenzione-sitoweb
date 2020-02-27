@@ -1,0 +1,23 @@
+# BEGIN Manutenzione temporanea
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REMOTE_ADDR} !^141\.206\.10\.56
+RewriteCond %{REQUEST_URI} !/manutenzione.html$ [NC]
+RewriteRule .* /manutenzione.html [R=307,L]
+</IfModule>
+# END Manutenzione
+
+# BEGIN WordPress
+# Le direttive (linee) tra `BEGIN WordPress` e `END WordPress` sono
+# generate dinamicamente, e dovrebbero essere modificare solo con i filtri di WordPress.
+# Ogni modifica alle direttive tra questi marcatori sarà sovrascritta.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
